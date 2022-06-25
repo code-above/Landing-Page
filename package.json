@@ -1,12 +1,16 @@
 {
+  "homepage": "https://code-above.github.io/my-landing-page",
   "name": "prospec",
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "replaceFilePaths": "node replacer.js",
     "dev": "next dev",
-    "build": "next build",
-    "export": "next export",
-    "start": "next start"
+    "build": "next build && next export -o build && npm run replaceFilePaths",
+    "start": "next start",
+    "export": "next export -o build && npm run replaceFilePaths",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@brainhubeu/react-carousel": "^2.0.4",
@@ -21,6 +25,7 @@
     "@types/brainhubeu__react-carousel": "^2.0.4",
     "@types/react": "17.0.20",
     "autoprefixer": "^10.3.4",
+    "gh-pages": "^4.0.0",
     "postcss": "^8.3.6",
     "tailwindcss": "^2.2.15",
     "typescript": "4.4.3"
